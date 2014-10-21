@@ -64,8 +64,7 @@ checkEPELOrInstall()        {
 # Function to install EPEL
 installEPEL()       {
         ECHOBLUE "Getting latest EPEL repo"
-        wget ${EPELBASEURL}${EPELLATESTVERSIONFILE} -O 
-/root/${EPELLATESTVERSIONFILE}
+        wget ${EPELBASEURL}${EPELLATESTVERSIONFILE} -O /root/${EPELLATESTVERSIONFILE}
         ECHOBLUE "Installing latest EPEL repo"
         rpm -Uvh ${EPELLATESTVERSIONFILE}
 }
@@ -78,13 +77,10 @@ $2}'` -eq 1 ];
                 ECHOGREEN "First repository in repo file enabled"
         else
                 ECHORED "First repository in repo file disabled"
-                firstEnabledLine=`grep -n "enabled" /etc/yum.repos.d/epel.repo | head -1 | 
-awk -F':' '{print $1}'`;
-                ECHOBLUE "Deleting first occurence of 'enabled' from ${EPELREPOFILE} from 
-line ${firstEnabledLine}"
+                firstEnabledLine=`grep -n "enabled" /etc/yum.repos.d/epel.repo | head -1 | awk -F':' '{print $1}'`;
+                ECHOBLUE "Deleting first occurence of 'enabled' from ${EPELREPOFILE} from line ${firstEnabledLine}"
                 sed -i "${firstEnabledLine}d" ${EPELREPOFILE};
-                ECHOBLUE "Inserting 'enabled = 1' in ${EPELREPOFILE} on line 
-${firstEnabledLine}"
+                ECHOBLUE "Inserting 'enabled = 1' in ${EPELREPOFILE} on line ${firstEnabledLine}"
                 sed -i "${firstEnabledLine}ienabled = 1" ${EPELREPOFILE};
         fi
 }
