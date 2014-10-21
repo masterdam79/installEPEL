@@ -66,7 +66,7 @@ installEPEL()       {
         ECHOBLUE "Getting latest EPEL repo"
         wget ${EPELBASEURL}${EPELLATESTVERSIONFILE} -O /root/${EPELLATESTVERSIONFILE}
         ECHOBLUE "Installing latest EPEL repo"
-        rpm -Uvh ${EPELLATESTVERSIONFILE}
+        rpm -Uvh /root/${EPELLATESTVERSIONFILE}
 }
 
 #function to check if the repo file's first repository has been enabled or another
@@ -90,7 +90,4 @@ $2}'` -eq 1 ];
 checkElinksInstalledOrInstall
 
 checkEPELOrInstall
-
-checkEPELIncludePkgs
-
 
