@@ -5,7 +5,7 @@
 
 # Some variables
 EPELREPOFILE="/etc/yum.repos.d/epel.repo"
-RHELVERSIONFILE="/etc/redrat-release"
+RHELVERSIONFILE="/etc/redhat-release"
 RHELMAINVERSION=`cat /etc/redhat-release | awk -F' ' '{print $3}' | awk -F'.' '{print $1}'`
 ARCH=`uname -m`
 EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/"
