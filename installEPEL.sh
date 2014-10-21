@@ -11,15 +11,6 @@ ARCH=`uname -m`
 EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/"
 EPELLATESTVERSIONFILE=`links -dump ${EPELBASEURL} | grep epel-release  | awk -F' ' '{ print $2 }' | grep "http" | awk -F'/' '{print $8}' | sort | tail -1`
 
-
-# If this is not RHEL or CentOS, get the hell out
-if [ ! -f ${RHELVERSIONFILE} ]
-then
-	ECHORED "This is not RHEL or CentOS, exiting"
-	exit
-fi
-
-
 # Some pretty colors
 ECHORED()       {
         echo -e "\e[1;31m${1}\e[0m"
@@ -36,6 +27,13 @@ ECHOGREEN()     {
 ECHOBLUE()      {
         echo -e "\e[1;34m${1}\e[0m"
 }
+
+# If this is not RHEL or CentOS, get the hell out
+if [ ! -f ${RHELVERSIONFILE} ]
+then
+	ECHORED "This is not RHEL or CentOS, exiting"
+	exit
+fi
 
 
 # Function to check if elinks is installed and install it if not present
