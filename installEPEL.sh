@@ -63,7 +63,7 @@ checkEPELOrInstall()        {
 
 # Function to install EPEL
 installEPEL()       {
-        ECHOBLUE "Getting latest EPEL repo"
+        ECHOBLUE "Getting latest EPEL repo from ${EPELBASEURL}${EPELLATESTVERSIONFILE}"
         wget ${EPELBASEURL}${EPELLATESTVERSIONFILE} -O /root/${EPELLATESTVERSIONFILE}
         ECHOBLUE "Installing latest EPEL repo"
         rpm -Uvh /root/${EPELLATESTVERSIONFILE}
