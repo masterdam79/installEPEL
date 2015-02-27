@@ -6,7 +6,7 @@
 # Some variables
 EPELREPOFILE="/etc/yum.repos.d/epel.repo"
 RHELVERSIONFILE="/etc/redhat-release"
-RHELMAINVERSION=`cat /etc/redhat-release | awk -F' ' '{print $3}' | awk -F'.' '{print $1}'`
+RHELMAINVERSION=`egrep -o "[0-9]" /etc/redhat-release | head -1`
 ARCH=`uname -m`
 EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/"
 EPELLATESTVERSIONFILE=`links -dump ${EPELBASEURL} | grep epel-release  | awk -F' ' '{ print $2 }' | grep "http" | awk -F'/' '{print $8}' | sort | tail -1`
