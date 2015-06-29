@@ -6,9 +6,9 @@
 # Some variables
 EPELREPOFILE="/etc/yum.repos.d/epel.repo"
 RHELVERSIONFILE="/etc/redhat-release"
-RHELMAINVERSION=`egrep -o "[0-9]" /etc/redhat-release | head -1`
+RHELMAINVERSION=`egrep -o "[0-9]" ${RHELVERSIONFILE} | head -1`
 ARCH=`uname -m`
-EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/e/"
+EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/"
 EPELLATESTVERSIONFILE=`links -dump ${EPELBASEURL} | grep epel-release | awk '{ print $2 }' | grep "http" | awk -F'/' '{print $9}' | sort | tail -1`
 
 # Some pretty colors
