@@ -9,7 +9,7 @@ RHELVERSIONFILE="/etc/redhat-release"
 RHELMAINVERSION=`egrep -o "[0-9]" ${RHELVERSIONFILE} | head -1`
 ARCH=`uname -m`
 EPELBASEURL="http://dl.fedoraproject.org/pub/epel/${RHELMAINVERSION}/${ARCH}/"
-EPELLATESTVERSIONFILE=`links -dump ${EPELBASEURL} | grep epel-release | awk '{ print $2 }' | grep "http" | awk -F'/' '{print $9}' | sort | tail -1`
+EPELLATESTVERSIONFILE=`links -dump ${EPELBASEURL} | grep epel-release | awk '{ print $2 }' | grep "http" | awk -F'/' '{print $8}' | sort | tail -1`
 
 # Some pretty colors
 ECHORED()       {
